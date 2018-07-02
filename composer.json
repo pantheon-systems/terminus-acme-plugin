@@ -1,0 +1,35 @@
+{
+    "name": "pantheon-systems/terminus-acme-plugin",
+    "description": "Terminus commands to interact with ACME challenges.",
+    "type": "terminus-plugin",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": { "Pantheon\\Terminus\\": "src" }
+    },
+    "scripts": {
+        "cs": "phpcs --standard=PSR2 -n src",
+        "cbf": "phpcbf --standard=PSR2 -n src",
+        "lint": "find src -name '*.php' -print0 | xargs -0 -n1 php -l",
+        "unit": "phpunit --colors=always tests",
+        "functional": "TERMINUS_PLUGINS_DIR=.. PATH=tools/bin:$PATH bats -p -t tests/functional",
+        "install-bats": "if [ ! -f tools/bin/bats ] ; then git clone https://github.com/sstephenson/bats.git tools/bats; tools/bats/install.sh tools; fi",
+        "install-phpcs": "mkdir -p tools/phpcs && cd tools/phpcs && COMPOSER_BIN_DIR=../../vendor/bin composer require squizlabs/php_codesniffer:^2.7",
+        "install-phpunit": "mkdir -p tools/phpunit && cd tools/phpunit && COMPOSER_BIN_DIR=../../vendor/bin composer require phpunit/phpunit:^6",
+        "install-tools": [
+            "@install-bats",
+            "@install-phpcs",
+            "@install-phpunit"
+        ],
+        "test": [
+            "@lint",
+            "@unit",
+            "@functional",
+            "@cs"
+        ]
+    },
+    "extra": {
+        "terminus": {
+            "compatible-version": "^1"
+        }
+    }
+}
