@@ -51,14 +51,21 @@ class VerifyACMEChallengeCommand extends TerminusCommand implements SiteAwareInt
             // $data = $domains->getACMEStatus($domainToVerify->id);
             $data = GetACMEStatus::get($domains, $domainToVerify->id);
 
-            // Probably we can check $data->ownership_status to determine
-            // whether this verified or not.
+            $msg = $this->domainHttpsStatusMessage($data->ownership_status->status);
 
-            // If it has ['status' => 'required'] that means the domain
-            // has not been verified yet.
-
-            return (array)$data->ownership_status;
+            $this->log()->notice($msg, ['domain' => $domainToVerify->id, 'status' => $data->ownership_status->status]);
         }
+    }
+
+    protected function domainHttpsStatusMessage($status)
+    {
+        if ($status == 'required') {
+            return 'Queuing {domain} for verification status check. Run "terminus https:info" in five or ten minutes to determine result.';
+        }
+        if ($status == 'completed') {
+            return 'Verification checks for {domain} have been completed. Run "terminus domain:dns" to see the recommended DNS changes that need to be made for this domain.';
+        }
+        return 'Unknown https verification status "{status}" for {domain}.';
     }
 
     protected function determineValidationDomains($domains, $domain)
