@@ -66,11 +66,11 @@ class ChallengeCommand extends TerminusCommand implements SiteAwareInterface
      * @default-string-field challenge
      * @field-labels
      *     domain: Domain
-     *     record-name: Record Name
+     *     record-name: Name
      *     ttl: TTL
      *     class: Class
      *     record-type: Record Type
-     *     challenge: Challenge
+     *     text-data: Text Data
      * @return RowsOfFields
      *
      * @usage <site>.<env> Displays domains associated with <site>'s <env> environment.
@@ -88,18 +88,16 @@ class ChallengeCommand extends TerminusCommand implements SiteAwareInterface
             throw new TerminusException('No DNS txt record challenge information available for domain {domain}.', compact('status', 'domain'));
         }
 
-        $challenge = $data->verification_dns_txt;
-
         $txt_record_components = [
             'domain' => $domain,
-            'record-name' => "_acme-$challenge.$domain.",
+            'record-name' => "_acme-challenge.$domain.",
             'ttl' => '300',
             'class' => 'IN',
             'record-type' => 'TXT',
-            'challenge' => $challenge,
+            'text-data' => $data->verification_dns_txt,
         ];
 
-        $dns_txt_record_tmpl = 'record-name ttl class record-type "challenge"';
+        $dns_txt_record_tmpl = 'record-name ttl class record-type "text-data"';
         $txt_record = str_replace(array_keys($txt_record_components), array_values($txt_record_components), $dns_txt_record_tmpl);
 
         // Provide instructions in a log message when the format is 'list'
