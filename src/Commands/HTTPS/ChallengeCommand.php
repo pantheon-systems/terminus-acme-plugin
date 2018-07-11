@@ -88,13 +88,15 @@ class ChallengeCommand extends TerminusCommand implements SiteAwareInterface
             throw new TerminusException('No DNS txt record challenge information available for domain {domain}.', compact('status', 'domain'));
         }
 
+        $challenge = $data->verification_dns_txt;
+
         $txt_record_components = [
             'domain' => $domain,
-            'record-name' => "_acme-challenge.$domain.",
+            'record-name' => "_acme-$challenge.$domain.",
             'ttl' => '300',
             'class' => 'IN',
             'record-type' => 'TXT',
-            'challenge' => $data->verification_dns_txt,
+            'challenge' => $challenge,
         ];
 
         $dns_txt_record_tmpl = 'record-name ttl class record-type "challenge"';
