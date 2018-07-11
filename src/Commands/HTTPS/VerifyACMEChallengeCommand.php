@@ -60,7 +60,7 @@ class VerifyACMEChallengeCommand extends TerminusCommand implements SiteAwareInt
     protected function domainHttpsStatusMessage($status)
     {
         if ($status == 'required') {
-            return 'Queuing {domain} for verification status check. Run "terminus https:info" in five or ten minutes to determine result.';
+            return 'The domain {domain} has not completed its pre-authentication checks yet. Please confirm that a dns-txt record (dns-01) or an http verification fie (http-01) has been correctly set up. Running verification status checks on this domain again. Run "terminus https:info" in five or ten minutes to determine result.';
         }
         if ($status == 'completed') {
             return 'Verification checks for {domain} have been completed. Run "terminus domain:dns" to see the recommended DNS changes that need to be made for this domain.';
