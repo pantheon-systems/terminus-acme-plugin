@@ -14,7 +14,6 @@ These commands require no configuration
  [notice] Create a DNS txt record containing:
 _acme-CHALLENGE_TEXT.example.com. 300 IN TXT "CHALLENGE_TEXT"
 * `terminus https:challenge:file`
-* `terminus https:verify`
 
 ## Installation
 To install this plugin place it in `~/.terminus/plugins/`.
