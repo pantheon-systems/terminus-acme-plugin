@@ -10,7 +10,7 @@ use Pantheon\Terminus\Site\SiteAwareTrait;
 use Pantheon\Terminus\Util\GetACMEStatus;
 
 /**
- * Class VerifyACMEChallengeCommand
+ * Class ChallengeCommand
  * @package Pantheon\Terminus\Commands\HTTPS
  */
 class ChallengeCommand extends TerminusCommand implements SiteAwareInterface
