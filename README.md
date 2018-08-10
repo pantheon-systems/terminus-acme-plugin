@@ -10,10 +10,12 @@ Terminus commands to interact with ACME challenges. Temporary. Will be rolled in
 These commands require no configuration
 
 ## Usage
-* `terminus alpha:https:challenge:dns-txt example.com`
+* `terminus alpha:https:challenge:dns-txt <site>.<env> example.com`
  [notice] Create a DNS txt record containing:
 _acme-CHALLENGE_TEXT.example.com. 300 IN TXT "CHALLENGE_TEXT"
-* `terminus https:challenge:file`
+* `terminus alpha:https:challenge:file <site>.<env>`
+
+You must be a member of the site's team to create challenges.
 
 ## Installation
 To install this plugin place it in `~/.terminus/plugins/`.
