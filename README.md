@@ -10,7 +10,7 @@ Terminus commands to interact with ACME challenges. Temporary. Will be rolled in
 These commands require no configuration
 
 ## Usage
-* `terminus https:challenge:dns-txt example.com`
+* `terminus alpha:https:challenge:dns-txt example.com`
  [notice] Create a DNS txt record containing:
 _acme-CHALLENGE_TEXT.example.com. 300 IN TXT "CHALLENGE_TEXT"
 * `terminus https:challenge:file`
