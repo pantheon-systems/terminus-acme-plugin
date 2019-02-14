@@ -43,4 +43,4 @@ Note that prior to running the tests, you should first run:
 * `composer install-tools`
 
 ## Help
-Run `terminus help https:challenge:dns-txt` for help.
+Run `terminus help alpha:https:challenge:dns-txt` for help.
