@@ -101,7 +101,7 @@ class ChallengeCommand extends TerminusCommand implements SiteAwareInterface
         // command is the full dns txt record.
         if ($options['format'] == 'list') {
           $this->log()->notice("Create a DNS txt record containing:\n$txt_record\n");
-          $this->log()->notice('After this is complete, run {command}', ['command' => "terminus acme-dns-verify $site_env $domain"]);
+          $this->log()->notice('After this is complete, run {command}', ['command' => "terminus acme-txt-verify $site_env $domain"]);
         } else {
           return new RowsOfFields([$txt_record => $txt_record_components]);
         }

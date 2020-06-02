@@ -41,7 +41,7 @@ class ChallengeVerifyCommand extends TerminusCommand implements SiteAwareInterfa
    * @authorize
    *
    * @command alpha:https:challenge:dns-txt:verify
-   * @aliases acme-dns-verify
+   * @aliases acme-txt-verify
    *
    * @param string $site_env Site & environment in the format `site-name.env`
    * @param string $domain The domain name to verify.
