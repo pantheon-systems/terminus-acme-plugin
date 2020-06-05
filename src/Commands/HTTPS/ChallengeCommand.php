@@ -78,7 +78,7 @@ class ChallengeCommand extends TerminusCommand implements SiteAwareInterface
      *     text-data: Text Data
      * @return RowsOfFields
      *
-     * @usage <site>.<env> Displays domains associated with <site>'s <env> environment.
+     * @usage <site>.<env> <domain> Obtains an ACME dns-01 challenge you can serve during migration to Pantheon
      */
     public function getChallengeDNStxt($site_env, $domain, $options = ['format' => 'list'])
     {
