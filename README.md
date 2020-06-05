@@ -70,7 +70,7 @@ To install this plugin place it in `~/.terminus/plugins/`.
 On Mac OS/Linux:
 ```
 mkdir -p ~/.terminus/plugins
-curl https://github.com/pantheon-systems/terminus-acme-plugin/archive/0.2.0.tar.gz -L | tar -C ~/.terminus/plugins -xvz
+curl https://github.com/pantheon-systems/terminus-acme-plugin/archive/2.0.0-alpha1.tar.gz -L | tar -C ~/.terminus/plugins -xvz
 ```
 
 ## Help
